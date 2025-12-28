@@ -4,11 +4,11 @@ from langchain_core.documents import Document
 import re
 from typing import List
 
-# 将自然语言 query 转成“高信息密度关键词”
+# 将自然语言 query 转成"高信息密度关键词"
 # 去除掉噪声
 def normalize_query(query: str) -> List[str]:
     """
-    将自然语言 query 转成“高信息密度关键词”
+    将自然语言 query 转成"高信息密度关键词"
 
     示例：
     - 什么是蓝精灵协议？ → ["蓝精灵协议"]
@@ -47,7 +47,7 @@ def normalize_query(query: str) -> List[str]:
 
 
 # =========================
-# 预置：模拟“知识库文档”
+# 预置：模拟"知识库文档"
 # （你之后会替换成你自己拆分的）
 # =========================
 
@@ -71,7 +71,7 @@ DOCUMENTS: List[Document] = [
         }
     ),
     Document(
-        page_content="特殊约定：Aurora-42 项目中，“蓝鲸协议”指的是一种内部定义的数据同步流程，与公开互联网无关。",
+        page_content='特殊约定：Aurora-42 项目中，"蓝鲸协议"指的是一种内部定义的数据同步流程，与公开互联网无关。',
         metadata={
             "source": "internal_project_record.txt",
             "project": "Aurora-42",
@@ -80,7 +80,7 @@ DOCUMENTS: List[Document] = [
         }
     ),
      Document(
-        page_content="特殊约定：Burora-52 项目中，“蓝精灵协议”指的是一种内部定义的数据同步流程，与公开互联网无关。",
+        page_content='特殊约定：Burora-52 项目中，"蓝精灵协议"指的是一种内部定义的数据同步流程，与公开互联网无关。',
         metadata={
             "source": "internal_project_record.txt",
             "project": "Burora-52",
@@ -167,3 +167,4 @@ if __name__ == "__main__":
     query = "北京今天的天气怎么样"
     results = retrieve(query)
     print(results)
+
