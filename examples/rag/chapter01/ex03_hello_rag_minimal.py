@@ -4,7 +4,8 @@ from langchain_ollama import ChatOllama
 def main():
     # 1. 创建模型（本地 Ollama）
     llm = ChatOllama(
-        model="gemma3:1b",
+        model="qwen3:4b",
+        # model="gemma3:1b",
         temperature=0.7,
     )
 
@@ -57,7 +58,7 @@ Answer: 给用户的最终回答
 
     # 2. 构造消息
     messages = [
-        #  SystemMessage(content=system_message),
+         SystemMessage(content=system_message),
          HumanMessage(content=user_message),
     ]
 
