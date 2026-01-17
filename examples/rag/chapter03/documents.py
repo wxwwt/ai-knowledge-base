@@ -1,33 +1,10 @@
+# rag/chapter03/documents.py
+# 测试用的文档数据，供所有测试文件复用
+
 from typing import List
 from langchain_core.documents import Document
-from examples.rag.chapter03.index import get_vectorstore
 
-def vector_retrieve(
-    query: str,
-    documents: List[Document],
-    top_k: int = 3
-) -> List[Document]:
-    """
-    向量召回（V1）
-
-    特点：
-    - 只负责“找相似”
-    - 不负责业务规则
-    - 不做排序策略
-    """
-
-    vectorstore = get_vectorstore(documents)
-
-    results = vectorstore.similarity_search(
-        query=query,
-        k=top_k
-    )
-
-    return results
-
-if __name__ == "__main__":
-    
-    DOCUMENTS: list[Document] = [
+DOCUMENTS: List[Document] = [
     Document(
         page_content="项目代号：Project Aurora-42。该项目于 2025-12-15 内部启动，目标是为一家中型制造企业构建私有化 AI 知识库系统。",
         metadata={
@@ -55,7 +32,7 @@ if __name__ == "__main__":
             "doc_type": "protocol"
         }
     ),
-     Document(
+    Document(
         page_content='特殊约定：Burora-52 项目中，"蓝精灵协议"指的是一种内部定义的数据同步流程，与公开互联网无关。',
         metadata={
             "source": "internal_project_record.txt",
@@ -65,6 +42,3 @@ if __name__ == "__main__":
         }
     )
 ]
-    query = "什么是蓝精灵协议？"
-    results = vector_retrieve(query, DOCUMENTS)
-    print(results)
